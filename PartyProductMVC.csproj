@@ -514,6 +514,7 @@
     <Content Include="Views\AssignParty\Index.cshtml" />
     <Content Include="Views\ProductRate\Index.cshtml" />
     <Content Include="Views\Invoice\Index.cshtml" />
+    <Content Include="Views\Party\PartyAddEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

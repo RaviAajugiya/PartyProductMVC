@@ -1,4 +1,4 @@
-﻿@model PartyProductMVC.Models.Party
+﻿@model IEnumerable<PartyProductMVC.Models.Party>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,6 +6,20 @@
 
 <h2>Index</h2>
 
-@*<table class="table table-striped">
+<table class="table table-striped">
+    <tr>
+        <th>Party Id</th>
+        <th>Party Name</th>
+    </tr>
+    @foreach(var party in Model)
+    {
+        <tr>
+            <td>@party.PartyId</td>
+            <td>@party.PartyName</td>
+            <td>@Html.ActionLink("Edit", "Edit", "Party", new { Id = party.PartyId })</td>
+            <td>@Html.ActionLink("Delete", "Delete", "Party", new { Id = party.PartyId })</td>
 
-</table>*@
+        </tr>
+    }
+    
+</table>
