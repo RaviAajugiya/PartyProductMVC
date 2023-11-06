@@ -7,13 +7,13 @@ namespace PartyProductMVC.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddProductDb1 : IMigrationMetadata
+    public sealed partial class AddPartyProductData : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddProductDb1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddPartyProductData));
         
         string IMigrationMetadata.Id
         {
-            get { return "202311061030035_AddProductDb1"; }
+            get { return "202311061115121_AddPartyProductData"; }
         }
         
         string IMigrationMetadata.Source
