@@ -22,7 +22,7 @@ namespace PartyProductMVC
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-slate.css",
                         "~/Content/DataTables/css/dataTables.bootstrap.css",
                       "~/Content/site.css"));
         }

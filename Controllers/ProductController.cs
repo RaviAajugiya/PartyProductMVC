@@ -1,6 +1,8 @@
-﻿using System;
+﻿using PartyProductMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -8,10 +10,63 @@ namespace PartyProductMVC.Controllers
 {
     public class ProductController : Controller
     {
-        // GET: Product
+        private ApplicationDbContext Db = new ApplicationDbContext();
+
+        protected override void Dispose(bool disposing)
+        {
+            Db.Dispose();
+        }
+
+        // GET: Partys
         public ActionResult Index()
         {
-            return View();
+            var Product = Db.Product;
+            return View(Product);
+        }
+
+        public ActionResult ProductAdd()
+        {
+            return View("ProductAddEdit", new Product { ProductId = 0 });
+
+        }
+        public ActionResult ProductEdit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var ProductEdit = Db.Product.First(e => e.ProductId == id);
+            if (ProductEdit == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View("ProductAddEdit", ProductEdit);
+        }
+
+
+
+        [HttpPost]
+        public ActionResult SaveProduct([Bind(Include = "ProductName,ProductId")] Product product)
+        {
+            if (product.ProductId == 0)
+            {
+                Db.Product.Add(product);
+            }
+            else
+            {
+                var ProductEdit = Db.Product.SingleOrDefault(p => p.ProductId == product.ProductId);
+                ProductEdit.ProductName = product.ProductName;
+            }
+            Db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            Db.Product.Remove(Db.Product.Find(id));
+            Db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

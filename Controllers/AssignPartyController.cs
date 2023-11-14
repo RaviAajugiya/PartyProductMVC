@@ -13,5 +13,10 @@ namespace PartyProductMVC.Controllers
         {
             return View();
         }
+
+        public ActionResult AssignAddEdit()
+        {
+            return View();
+        }
     }
 }

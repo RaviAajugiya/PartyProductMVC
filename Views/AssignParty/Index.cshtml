@@ -1,8 +1,9 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "AssignParty";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>AssignParty</h2>
+
+@Html.ActionLink("Assign Party", "AssignAddEdit", new { id = 0 }, new { @class = "btn btn-info mt-4" })
 
