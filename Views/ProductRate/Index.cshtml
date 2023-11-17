@@ -1,8 +1,30 @@
-﻿
+﻿@model IEnumerable<PartyProductMVC.Models.ProductRate>
 @{
     ViewBag.Title = "ProductRate";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>ProductRate</h2>
+<table class="table table-striped">
+    <tr>
+        <th>#</th>
+        <th>Product Name</th>
+        <th>Rate</th>
+        <th>Date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var productRate in Model)
+    {
+        <tr>
+            <td>@productRate.ProductRateId</td>
+            <td>@productRate.Product.ProductName</td>
+            <td>@productRate.Rate</td>
+            <td>@Html.DisplayFor(model => productRate.DateOfRate)</td>
+            <td>@Html.ActionLink("Edit", "ProductRateEdit", new { id = productRate.ProductRateId })</td>
+            <td>@Html.ActionLink("Delete", "ProductRateDelete", new { id = productRate.ProductRateId })</td>
+        </tr>
+    }
 
+    @Html.ActionLink("Add Product Rate", "ProductRateAdd", null, new { @class = "btn btn-info mt-4" })
+</table>

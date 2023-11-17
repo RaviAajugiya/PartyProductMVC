@@ -198,6 +198,10 @@
     <Compile Include="Migrations\202311160632347_AddAssignParty.designer.cs">
       <DependentUpon>202311160632347_AddAssignParty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202311171056283_AddProductRate.cs" />
+    <Compile Include="Migrations\202311171056283_AddProductRate.designer.cs">
+      <DependentUpon>202311171056283_AddProductRate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AssignParty.cs" />
@@ -523,6 +527,7 @@
     <Content Include="Views\Party\PartyAddEdit.cshtml" />
     <Content Include="Views\Product\ProductAddEdit.cshtml" />
     <Content Include="Views\AssignParty\AssignAddEdit.cshtml" />
+    <Content Include="Views\ProductRate\ProductRateAddEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -569,6 +574,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202311160632347_AddAssignParty.resx">
       <DependentUpon>202311160632347_AddAssignParty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311171056283_AddProductRate.resx">
+      <DependentUpon>202311171056283_AddProductRate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
