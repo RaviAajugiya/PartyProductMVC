@@ -28,7 +28,6 @@ namespace PartyProductMVC.Controllers
         public ActionResult PartyAdd()
         {
             return View("PartyAddEdit", new Party { PartyId = 0 });
-
         }
         public ActionResult PartyEdit(int? id)
         {

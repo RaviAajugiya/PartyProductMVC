@@ -194,12 +194,18 @@
     <Compile Include="Migrations\202311061115121_AddPartyProductData.designer.cs">
       <DependentUpon>202311061115121_AddPartyProductData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202311160632347_AddAssignParty.cs" />
+    <Compile Include="Migrations\202311160632347_AddAssignParty.designer.cs">
+      <DependentUpon>202311160632347_AddAssignParty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AssignParty.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Party.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductRate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -511,7 +517,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Party\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\AssignParty\Index.cshtml" />
+    <Content Include="Views\AssignParty\index.cshtml" />
     <Content Include="Views\ProductRate\Index.cshtml" />
     <Content Include="Views\Invoice\Index.cshtml" />
     <Content Include="Views\Party\PartyAddEdit.cshtml" />
@@ -560,6 +566,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202311061115121_AddPartyProductData.resx">
       <DependentUpon>202311061115121_AddPartyProductData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311160632347_AddAssignParty.resx">
+      <DependentUpon>202311160632347_AddAssignParty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

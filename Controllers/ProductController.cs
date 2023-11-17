@@ -27,24 +27,12 @@ namespace PartyProductMVC.Controllers
         public ActionResult ProductAdd()
         {
             return View("ProductAddEdit", new Product { ProductId = 0 });
-
         }
         public ActionResult ProductEdit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var ProductEdit = Db.Product.First(e => e.ProductId == id);
-            if (ProductEdit == null)
-            {
-                return HttpNotFound();
-            }
-
+            var ProductEdit = Db.Product.Single(e => e.ProductId == id);
             return View("ProductAddEdit", ProductEdit);
         }
-
-
 
         [HttpPost]
         public ActionResult SaveProduct([Bind(Include = "ProductName,ProductId")] Product product)

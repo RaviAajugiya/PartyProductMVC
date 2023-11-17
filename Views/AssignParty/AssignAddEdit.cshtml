@@ -1,4 +1,4 @@
-﻿
+﻿@model PartyProductMVC.Models.AssignParty
 @{
     ViewBag.Title = "AssignAddEdit";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,7 +6,19 @@
 
 <h2>AssignAddEdit</h2>
 
-@using (Html.BeginForm("SaveAssign", "AssignParty"))
-    {
-        Html.
-    }
+@using (Html.BeginForm("AssignSave", "AssignParty"))
+{
+    @Html.HiddenFor(model => Model.AssignId)
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Party.PartyId, "Select Patry:")
+        @Html.DropDownListFor(model => model.Party.PartyId, new SelectList(ViewBag.Parties, "PartyId", "PartyName"), "select Party", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Product.ProductId, "Select Product:")
+        @Html.DropDownListFor(model => model.Product.ProductId, new SelectList(ViewBag.Products, "ProductId", "ProductName"), "Select Product", new { @class = "form-control" })
+    </div>
+    <button class="btn btn-info mt-4">Submit</button>
+}
