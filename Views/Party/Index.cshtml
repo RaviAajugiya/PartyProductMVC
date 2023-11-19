@@ -13,14 +13,20 @@
     </tr>
     @foreach (var party in Model)
     {
-        <tr>    
+        <tr>
             <td>@party.PartyId</td>
             <td>@party.PartyName</td>
-            <td>@Html.ActionLink("Edit", "PartyEdit", new { id = party.PartyId })</td>
-            <td>@Html.ActionLink("Delete", "Delete", new { id = party.PartyId })</td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>@Html.ActionLink("Edit", "PartyEdit", new { id = party.PartyId })</td>
+                <td>@Html.ActionLink("Delete", "Delete", new { id = party.PartyId })</td>
+            }
+
         </tr>
     }
-
-    @Html.ActionLink("Add Party", "PartyAdd", null , new { @class = "btn btn-info mt-4" })
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Add Party", "PartyAdd", null, new { @class = "btn btn-info mt-4" })
+    }
 
 </table>

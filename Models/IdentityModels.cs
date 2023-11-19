@@ -24,11 +24,14 @@ namespace PartyProductMVC.Models
         public DbSet<Product> Product { get; set; }
         public DbSet<AssignParty> AssignParty { get; set; }
         public DbSet<ProductRate> ProductRate { get; set; }
+        public DbSet<Invoice> Invoice { get; set; }
+
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
 
         public static ApplicationDbContext Create()
         {

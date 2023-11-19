@@ -2,24 +2,15 @@
 {
     using Microsoft.AspNet.Identity.EntityFramework;
     using Microsoft.AspNet.Identity;
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
     using PartyProductMVC.Models;
+    using System;
+    using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<PartyProductMVC.Models.ApplicationDbContext>
+    public partial class InitialCreate1 : DbMigration
     {
-        public Configuration()
+        public override void Up()
         {
-            AutomaticMigrationsEnabled = false;
-            ContextKey = "PartyProductMVC.Models.ApplicationDbContext";
-        }
-
-        protected override void Seed(PartyProductMVC.Models.ApplicationDbContext context)
-        {
-            // Create roles
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
 
             if (!roleManager.RoleExists("admin"))
             {
@@ -29,7 +20,7 @@
             }
 
             // Create a user and assign the "admin" role
-            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
 
             if (userManager.FindByName("admin@example.com") == null)
             {
@@ -46,6 +37,9 @@
                 }
             }
         }
-    }
 
+        public override void Down()
+        {
+        }
+    }
 }
