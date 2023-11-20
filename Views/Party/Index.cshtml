@@ -4,29 +4,36 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<table class="table table-striped">
-    <tr>
-        <th>Party Id</th>
-        <th>Party Name</th>
-    </tr>
-    @foreach (var party in Model)
-    {
+<div class="">
+    <h2>Index</h2>
+    <table class="table table-striped w-75">
         <tr>
-            <td>@party.PartyId</td>
-            <td>@party.PartyName</td>
+            <th>Party Id</th>
+            <th>Party Name</th>
             @if (User.IsInRole("Admin"))
             {
-                <td>@Html.ActionLink("Edit", "PartyEdit", new { id = party.PartyId })</td>
-                <td>@Html.ActionLink("Delete", "Delete", new { id = party.PartyId })</td>
+                <th>Action</th>
             }
-
         </tr>
-    }
-    @if (User.IsInRole("Admin"))
-    {
-        @Html.ActionLink("Add Party", "PartyAdd", null, new { @class = "btn btn-info mt-4" })
-    }
+        @foreach (var party in Model)
+        {
+            <tr>
+                <td>@party.PartyId</td>
+                <td>@party.PartyName</td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "PartyEdit", new { id = party.PartyId }, new{ @class = "mr-3 btn btn-success btn-sm" })
+                        @Html.ActionLink("Delete", "Delete", new { id = party.PartyId }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Are sure wants to delete?');" })
+                    </td>
+                }
+            </tr>
+        }
+        @if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Add Party", "PartyAdd", null, new { @class = "btn btn-info my-4 m-auto " })
+        }
 
-</table>
+    </table>
+</div>

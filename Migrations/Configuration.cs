@@ -18,13 +18,13 @@
 
         protected override void Seed(PartyProductMVC.Models.ApplicationDbContext context)
         {
-            // Create roles
+
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
-            if (!roleManager.RoleExists("admin"))
+            if (!roleManager.RoleExists("Admin"))
             {
                 var role = new IdentityRole();
-                role.Name = "admin";
+                role.Name = "Admin";
                 roleManager.Create(role);
             }
 
@@ -42,7 +42,7 @@
 
                 if (chkUser.Succeeded)
                 {
-                    var result1 = userManager.AddToRole(user.Id, "admin");
+                    userManager.AddToRole(user.Id, "Admin");
                 }
             }
         }

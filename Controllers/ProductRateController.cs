@@ -21,17 +21,22 @@ namespace PartyProductMVC.Controllers
             var Data = Db.ProductRate.Include(p => p.Product).ToList();
             return View(Data);
         }
+
+        [Authorize(Roles = "Admin")]
         public ActionResult ProductRateAdd()
         {
             ViewBag.Products = Db.Product;
             return View("ProductRateAddEdit", new ProductRate { ProductRateId = 0 });
         }
+
+        [Authorize(Roles = "Admin")]
         public ActionResult ProductRateEdit(int id)
         {
             ViewBag.Products = Db.Product;
             var ProductRateEdit = Db.ProductRate.First(r => r.ProductRateId == id);
             return View("ProductRateAddEdit", ProductRateEdit);
         }
+
         public ActionResult ProductRateDelete(int id)
         {
             Db.ProductRate.Remove(Db.ProductRate.Find(id));

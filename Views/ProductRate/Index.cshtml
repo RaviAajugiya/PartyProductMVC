@@ -5,14 +5,16 @@
 }
 
 <h2>ProductRate</h2>
-<table class="table table-striped">
+<table class="table table-striped w-75">
     <tr>
         <th>#</th>
         <th>Product Name</th>
         <th>Rate</th>
         <th>Date</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        @if (User.IsInRole("Admin"))
+        {
+            <th>Action</th>
+        }
     </tr>
     @foreach (var productRate in Model)
     {
@@ -21,10 +23,19 @@
             <td>@productRate.Product.ProductName</td>
             <td>@productRate.Rate</td>
             <td>@Html.DisplayFor(model => productRate.DateOfRate)</td>
-            <td>@Html.ActionLink("Edit", "ProductRateEdit", new { id = productRate.ProductRateId })</td>
-            <td>@Html.ActionLink("Delete", "ProductRateDelete", new { id = productRate.ProductRateId })</td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "ProductRateEdit", new { id = productRate.ProductRateId }, new { @class = "mr-3 btn btn-success btn-sm" })
+                    @Html.ActionLink("Delete", "ProductRateDelete", new { id = productRate.ProductRateId }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Are sure wants to delete?');" })
+
+                </td>
+            }
         </tr>
     }
 
-    @Html.ActionLink("Add Product Rate", "ProductRateAdd", null, new { @class = "btn btn-info mt-4" })
-</table>
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Add Product Rate", "ProductRateAdd", null, new { @class = "btn btn-info my-4" })
+    }
+    </table>

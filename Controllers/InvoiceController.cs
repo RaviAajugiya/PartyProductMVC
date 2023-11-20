@@ -7,11 +7,13 @@ using System.Web.Mvc;
 
 namespace PartyProductMVC.Controllers
 {
+
     public class InvoiceController : Controller
     {
         private ApplicationDbContext Db = new ApplicationDbContext();
 
         // GET: Invoice
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             ViewBag.PartyName = (from assignParty in Db.AssignParty
@@ -47,12 +49,12 @@ namespace PartyProductMVC.Controllers
                 from productRate in Db.ProductRate
                 join product in Db.Product on productRate.ProductId equals product.ProductId
                 where product.ProductName == productName
-                orderby productRate.DateOfRate
+                orderby productRate.DateOfRate descending
                 select new
                 {
                     Rate = productRate.Rate
                 }
-                ).Single();
+                ).First();
 
             return Json(Rate, JsonRequestBehavior.AllowGet);
 

@@ -17,17 +17,20 @@ namespace PartyProductMVC.Controllers
             Db.Dispose();
         }
 
-        // GET: Partys
+
         public ActionResult Index()
         {
             var Product = Db.Product;
             return View(Product);
         }
 
+        [Authorize(Roles = "admin")]
         public ActionResult ProductAdd()
         {
             return View("ProductAddEdit", new Product { ProductId = 0 });
         }
+
+        [Authorize(Roles = "admin")]
         public ActionResult ProductEdit(int? id)
         {
             var ProductEdit = Db.Product.Single(e => e.ProductId == id);
@@ -35,6 +38,7 @@ namespace PartyProductMVC.Controllers
         }
 
         [HttpPost]
+
         public ActionResult SaveProduct([Bind(Include = "ProductName,ProductId")] Product product)
         {
             if (product.ProductId == 0)
@@ -49,6 +53,7 @@ namespace PartyProductMVC.Controllers
             Db.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
         public ActionResult Delete(int id)
         {

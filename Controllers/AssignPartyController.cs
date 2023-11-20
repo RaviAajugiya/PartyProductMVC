@@ -26,6 +26,7 @@ namespace PartyProductMVC.Controllers
             return View(data);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult AssignAdd()
         {
             ViewBag.Parties = Db.Party;
@@ -33,6 +34,7 @@ namespace PartyProductMVC.Controllers
             return View("AssignAddEdit", new AssignParty { AssignId = 0 });
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult AssignEdit(int? Id)
         {
             ViewBag.Parties = Db.Party;

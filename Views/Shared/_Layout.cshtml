@@ -22,7 +22,12 @@
                     <li>@Html.ActionLink("Product", "Index", "Product", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Assign Party", "Index", "AssignParty", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Product Rate", "Index", "ProductRate", new { area = "" }, new { @class = "nav-link" })</li>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        
                     <li>@Html.ActionLink("Invoice", "Index", "Invoice", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

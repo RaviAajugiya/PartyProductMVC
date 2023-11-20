@@ -24,12 +24,15 @@ namespace PartyProductMVC.Controllers
             var party = Db.Party;
             return View(party);
         }
-        [Authorize(Roles = "admin")]
+
+
+        [Authorize(Roles = "Admin")]
         public ActionResult PartyAdd()
         {
             return View("PartyAddEdit", new Party { PartyId = 0 });
         }
-        [Authorize(Roles = "admin")]
+
+        [Authorize(Roles = "Admin")]
         public ActionResult PartyEdit(int? id)
         {
             if (id == null)
@@ -45,7 +48,7 @@ namespace PartyProductMVC.Controllers
             return View("PartyAddEdit", PartyEdit);
         }
 
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult SaveParty([Bind(Include = "PartyName,PartyId")] Party party)
         {
@@ -62,7 +65,7 @@ namespace PartyProductMVC.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public ActionResult Delete(int id)
         {
             Db.Party.Remove(Db.Party.Find(id));
