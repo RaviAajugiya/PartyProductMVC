@@ -66,5 +66,10 @@ namespace PartyProductMVC.Controllers
             Db.SaveChanges();
             return Json(new { });
         }
+
+        public ActionResult History(Invoice invoice)
+        {
+            return View(Db.Invoice.ToList());
+        }
     }
 }

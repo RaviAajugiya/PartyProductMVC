@@ -1,0 +1,78 @@
+﻿@model IEnumerable<PartyProductMVC.Models.Invoice>
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    <style >
+    /* Add a custom style for white text color */
+    #historyTable th,
+    #historyTable td,
+    #historyTable_filter input,
+    #historyTable_info, label, select {
+        color: white !important;
+    }
+
+    label, select {
+        color: white !important;
+    }
+
+    .dataTables_info {
+        color: white !important;
+    }
+
+    option{
+        color:black;
+    }
+
+    /* Set the background color and border color of the search input field */
+    #historyTable_filter input {
+        background-color: white;
+        border: 1px solid #ced4da; /* Add a border for better visibility */
+        border-radius: 4px; /* Optional: Add border-radius for a rounded appearance */
+    }
+</style>
+
+
+<h2 class="my-3">History</h2>
+<table id="historyTable" class="table table-striped w-75 text-white">
+    <thead class="mt-5">
+        <tr>
+            <th data-searchable="true">Party</th>
+            <th data-searchable="true">Product</th>
+            <th data-searchable="false">Rate</th>
+            <th data-searchable="false">Quantity</th>
+            <th data-searchable="false">Total</th>
+            <th data-searchable="true">Purchase Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var invoice in Model)
+        {
+            <tr>
+                <td>@invoice.PartyName</td>
+                <td>@invoice.ProductName</td>
+                <td>@invoice.CurrentRate</td>
+                <td>@invoice.Quantity</td>
+                <td>@(invoice.CurrentRate * invoice.Quantity)</td>
+                <td>@invoice.DateOfPurchase</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (User.IsInRole("Admin"))
+{
+    @Html.ActionLink("Add Party", "PartyAdd", null, new { @class = "btn btn-info my-4 m-auto " })
+}
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+
+<script>
+    $(document).ready(function () {
+        $('#historyTable').DataTable();
+    });
+</script>

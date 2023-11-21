@@ -234,6 +234,10 @@
     <Compile Include="Migrations\202311210601373_AddUniqueKeyToAssign.designer.cs">
       <DependentUpon>202311210601373_AddUniqueKeyToAssign.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202311211522224_AddValidationAttributes.cs" />
+    <Compile Include="Migrations\202311211522224_AddValidationAttributes.designer.cs">
+      <DependentUpon>202311211522224_AddValidationAttributes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AssignParty.cs" />
@@ -561,6 +565,7 @@
     <Content Include="Views\Product\ProductAddEdit.cshtml" />
     <Content Include="Views\AssignParty\AssignAddEdit.cshtml" />
     <Content Include="Views\ProductRate\ProductRateAddEdit.cshtml" />
+    <Content Include="Views\Invoice\History.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -634,6 +639,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202311210601373_AddUniqueKeyToAssign.resx">
       <DependentUpon>202311210601373_AddUniqueKeyToAssign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311211522224_AddValidationAttributes.resx">
+      <DependentUpon>202311211522224_AddValidationAttributes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
