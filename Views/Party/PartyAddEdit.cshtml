@@ -8,11 +8,13 @@
 @using (Html.BeginForm("SaveParty","Party"))
 {
     @Html.HiddenFor(model => Model.PartyId)
-    <div class="form-group">
-        @Html.LabelFor(model => Model.PartyName, new { @class = "col-form-label mt-4 " })
-        @Html.TextBoxFor(model => Model.PartyName, new { @class = "form-control " })
-        <button class="btn btn-info mt-4">Submit</button>
-    </div>
+<div class="form-group">
+    @Html.LabelFor(model => Model.PartyName, new { @class = "col-form-label mt-4 " })
+    @Html.TextBoxFor(model => Model.PartyName, new { @class = "form-control " })
+    @Html.ValidationMessageFor(model => Model.PartyName, "", new { @class = "text-danger" })
+    @Html.ValidationMessage("CustomErrorKey", new { @class = "text-danger" })
+</div>
+    <button class="btn btn-info mt-4">Submit</button>
 }
 <script>
 

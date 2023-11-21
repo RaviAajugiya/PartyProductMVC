@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -52,17 +54,38 @@ namespace PartyProductMVC.Controllers
         [HttpPost]
         public ActionResult SaveParty([Bind(Include = "PartyName,PartyId")] Party party)
         {
-            if (party.PartyId == 0)
+            if (ModelState.IsValid)
             {
-                Db.Party.Add(party);
+                try
+                {
+                    if (party.PartyId == 0)
+                    {
+                        Db.Party.Add(party);
+                    }
+                    else
+                    {
+                        var PartyEdit = Db.Party.SingleOrDefault(p => p.PartyId == party.PartyId);
+                        PartyEdit.PartyName = party.PartyName;
+                    }
+                    Db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (DbUpdateException ex)
+                {
+                    var sqlException = ex.GetBaseException() as SqlException;
+
+                    if (sqlException != null && sqlException.Number == 2601)
+                    {
+                        ModelState.AddModelError("CustomErrorKey", "The value for PartyName must be unique.");
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
             }
-            else
-            {
-                var PartyEdit = Db.Party.SingleOrDefault(p => p.PartyId == party.PartyId);
-                PartyEdit.PartyName = party.PartyName;
-            }
-            Db.SaveChanges();
-            return RedirectToAction("Index");
+
+            return View("PartyAddEdit");
         }
 
         //[Authorize(Roles = "admin")]

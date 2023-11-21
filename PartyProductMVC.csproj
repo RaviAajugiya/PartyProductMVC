@@ -218,6 +218,22 @@
     <Compile Include="Migrations\202311190601450_editInvoiceModeladdDate.designer.cs">
       <DependentUpon>202311190601450_editInvoiceModeladdDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202311210420003_temp.cs" />
+    <Compile Include="Migrations\202311210420003_temp.designer.cs">
+      <DependentUpon>202311210420003_temp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311210451372_AddUniqueKeyToParty.cs" />
+    <Compile Include="Migrations\202311210451372_AddUniqueKeyToParty.designer.cs">
+      <DependentUpon>202311210451372_AddUniqueKeyToParty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311210544225_AddUniqueKeyToProduct.cs" />
+    <Compile Include="Migrations\202311210544225_AddUniqueKeyToProduct.designer.cs">
+      <DependentUpon>202311210544225_AddUniqueKeyToProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311210601373_AddUniqueKeyToAssign.cs" />
+    <Compile Include="Migrations\202311210601373_AddUniqueKeyToAssign.designer.cs">
+      <DependentUpon>202311210601373_AddUniqueKeyToAssign.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AssignParty.cs" />
@@ -606,6 +622,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202311190601450_editInvoiceModeladdDate.resx">
       <DependentUpon>202311190601450_editInvoiceModeladdDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311210420003_temp.resx">
+      <DependentUpon>202311210420003_temp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311210451372_AddUniqueKeyToParty.resx">
+      <DependentUpon>202311210451372_AddUniqueKeyToParty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311210544225_AddUniqueKeyToProduct.resx">
+      <DependentUpon>202311210544225_AddUniqueKeyToProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311210601373_AddUniqueKeyToAssign.resx">
+      <DependentUpon>202311210601373_AddUniqueKeyToAssign.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -17,11 +17,10 @@ namespace PartyProductMVC.Models
         [ForeignKey("Product")]
         public int ProductId { get; set; }
 
-        [Required]
-        [Range(0, double.MaxValue, ErrorMessage = "Rate must be a positive number")]
+        [Required(ErrorMessage = "Rate is required")]
         public int Rate { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Date is required")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateOfRate { get; set; }

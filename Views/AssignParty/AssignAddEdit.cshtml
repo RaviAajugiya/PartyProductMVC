@@ -19,6 +19,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Product.ProductId, "Select Product:")
         @Html.DropDownListFor(model => model.Product.ProductId, new SelectList(ViewBag.Products, "ProductId", "ProductName"), "Select Product", new { @class = "form-control" })
+        @Html.ValidationMessage("CustomErrorKey", new { @class = "text-danger" })
     </div>
     <button class="btn btn-info mt-4">Submit</button>
 }

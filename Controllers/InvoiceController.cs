@@ -21,7 +21,7 @@ namespace PartyProductMVC.Controllers
                                  select new
                                  {
                                      partyName = party.PartyName
-                                 }).Distinct();
+                                 }).Distinct().ToList();
             return View();
         }
 

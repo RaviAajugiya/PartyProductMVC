@@ -11,6 +11,10 @@ namespace PartyProductMVC.Models
     {
         [Key]
         public int ProductId { get; set; }
+
+        [Required(ErrorMessage = "Party Name is required")]
+        [StringLength(450)]
+        [Index(IsUnique = true)]
         public string ProductName { get; set; }
     }
 }

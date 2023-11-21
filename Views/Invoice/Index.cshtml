@@ -4,57 +4,57 @@
 }
 <script src="~/Scripts/jquery-3.4.1.js"></script>
 <h2>Invoice</h2>
-    <div class="row">
-        <div class="col-md-4">
-            <form id="invoiceForm">
-                @Html.Hidden("DateOfPurchase", DateTime.Now.ToString("dd-MM-yyyy"))
-                <div class="form-group">
-                    @Html.Label("PartyName", "Select Party", new { @class = "col-form-label" })
-                    @Html.DropDownList("PartyName", new SelectList(ViewBag.PartyName, "PartyName", "PartyName"), "Select Party", new { @class = "form-control", onchange = "GetProduct()" })
-                </div>
-
-                <div class="form-group">
-                    @Html.Label("ProductName", "Select Product", new { @class = "col-form-label" })
-                    @Html.DropDownList("ProductName", Enumerable.Empty<SelectListItem>(), "Select Product", new { @class = "form-control", onchange = "GetProductRate()" })
-                </div>
-
-                <div class="form-group">
-                    @Html.Label("CurrentRate", new { @class = "col-form-label" })
-                    @Html.TextBox("CurrentRate", "", new { @class = "form-control" })
-                </div>
-
-                <div class="form-group">
-                    @Html.Label("Quantity", new { @class = "col-form-label" })
-                    @Html.TextBox("Quantity", "", new { @class = "form-control" })
-                </div>
-                <button id="submitInvoice" class="btn btn-info mt-4">Submit</button>
-            </form>     
-        </div>
-
-        <div class="col-md-8">
-            <div class="table-container">
-                <h2>Table Data</h2>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <td>Party</td>
-                            <td>Product</td>
-                            <td>Rate</td>
-                            <td>Quantity</td>
-                            <td>Total</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-                <div>Grand Total: <span id="grandTotal">0.00</span> </div>
+<div class="row">
+    <div class="col-md-4">
+        <form id="invoiceForm">
+            @Html.Hidden("DateOfPurchase", DateTime.Now.ToString("dd-MM-yyyy"))
+            <div class="form-group">
+                @Html.Label("PartyName", "Select Party", new { @class = "col-form-label" })
+                @Html.DropDownList("PartyName", new SelectList(ViewBag.PartyName, "PartyName", "PartyName"), "Select Party", new { @class = "form-control", onchange = "GetProduct()" })
             </div>
-            <button id="CloseInvoice" class="btn btn-danger mt-4">Close Invoice</button>
 
-        </div>
+            <div class="form-group">
+                @Html.Label("ProductName", "Select Product", new { @class = "col-form-label" })
+                @Html.DropDownList("ProductName", Enumerable.Empty<SelectListItem>(), "Select Product", new { @class = "form-control", onchange = "GetProductRate()" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("CurrentRate", new { @class = "col-form-label" })
+                @Html.TextBox("CurrentRate", "", new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Quantity", new { @class = "col-form-label" })
+                @Html.TextBox("Quantity", "", new { @class = "form-control" })
+            </div>
+            <button id="submitInvoice" class="btn btn-info mt-4">Submit</button>
+        </form>
     </div>
 
-    <script type="text/javascript">
+    <div class="col-md-8">
+        <div class="table-container">
+            <h2>Table Data</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Party</td>
+                        <td>Product</td>
+                        <td>Rate</td>
+                        <td>Quantity</td>
+                        <td>Total</td>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div>Grand Total: <span id="grandTotal">0.00</span> </div>
+        </div>
+        <button id="CloseInvoice" class="btn btn-danger mt-4">Close Invoice</button>
+
+    </div>
+</div>
+
+<script type="text/javascript">
     function GetProduct() {
         var partyName = $("#PartyName").val();
         $.ajax({
